@@ -23,7 +23,7 @@ public class Student {
 
     public String getName() {
         return name;
-    }git init
+    }
 
     public void setName(String name) {
         this.name = name;
