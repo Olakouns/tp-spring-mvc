@@ -1,5 +1,6 @@
 package io.sn.mpisi2.services;
 
+import io.sn.mpisi2.dao.StudentDao;
 import io.sn.mpisi2.entities.Course;
 import io.sn.mpisi2.entities.Student;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,13 @@ public class CoursesServiceImpl implements CoursesService {
     private static final List<Student> STUDENTS = new ArrayList<>();
     private static final AtomicInteger ID_GENERATOR = new AtomicInteger(0);
     private static final AtomicInteger ID_COURSE_GENERATOR = new AtomicInteger(0);
+
+
+    private final StudentDao studentDao;
+
+    public CoursesServiceImpl(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     @Override
     public List<Course> getCourses() {
@@ -54,7 +62,8 @@ public class CoursesServiceImpl implements CoursesService {
 
     @Override
     public List<Student> getStudents() {
-        return STUDENTS;
+//        return STUDENTS;
+        return studentDao.getAllStudent();
     }
 
     @Override
